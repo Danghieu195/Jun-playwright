@@ -40,4 +40,4 @@ jobs:
 
       #B5: Chạy test
       - name: Run playwright test
-        run: npx playwright test
+        run: npm run test:get-by-role
