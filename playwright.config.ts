@@ -23,6 +23,15 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
+
+  timeout: 100000,
+
+// Tăng thời gian chờ cho expect: đợi element xuất hiện trên web
+// expect(locator).toBeVisible()
+  expect: {
+    timeout: 20000
+  },
+
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
@@ -30,6 +39,18 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    // chụp screenshot khi test failed
+    screenshot: 'only-on-failure',
+
+    //Tăng thời gian chờ cho các hành động như : click, fill, goto,...
+    actionTimeout: 30000,
+
+    //Tăng thời gian chờ cho việc điều hướng trang web: goto, reload,...
+    navigationTimeout: 30000,
+
+
+    // video ghi lai khi test failed
+    video: 'retain-on-failure',
   },
 
   /* Configure projects for major browsers */
